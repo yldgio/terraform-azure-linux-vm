@@ -1,0 +1,83 @@
+hostname = "centos-7"
+
+name_prefix ="az-hosted"
+
+
+#"public key for ssh access"
+
+#ssh_public_key = ""
+
+# optional variables
+#"region where the resources should exist"
+location = "westeurope"
+
+#"full address space allowed to the virtual network"
+vnet_address_space = "10.0.0.0/16"
+
+
+#"the subset of the virtual network for this subnet"
+subnet_address_space = "10.0.10.0/24"
+
+
+#"type of storage account"
+storage_account_type = "Standard_LRS"
+
+#"size of the vm to create"
+vm_size = "Standard_A0"
+
+
+#"name of the publisher of the image (az vm image list)"
+image_publisher = "OpenLogic"
+
+
+#"the name of the offer (az vm image list)"
+image_offer = "CentOS"
+
+
+#"image sku to apply (az vm image list)"
+image_sku = "7.5"
+
+
+#"version of the image to apply (az vm image list)"
+image_version = "latest"
+
+
+#"administrator user name"
+admin_username = "kamiagent"
+
+#"administrator password (recommended to disable password auth)"
+#admin_password = ""
+
+
+#"toggle for password auth (recommended to keep disabled)"
+disable_password_authentication = false
+
+
+#Replace [Organization] https://dev.azure.com/[Organization]/_usersSettings/tokens
+#"Specify the Azure DevOps url e.g. https://dev.azure.com/mmelcher"
+devops_url = "https://dev.azure.com/####"
+
+
+#Create via https://dev.azure.com/[Organization]/_usersSettings/tokens
+#"Provide a Personal Access Token (PAT) for Azure DevOps"
+pat = ""
+
+
+#The build agent pool. Create it via https://dev.azure.com/[Organization]/_settings/agentpools?poolId=8&_a=agents
+#"Specify the name of the agent pool - must exist before"
+pool = "centos"
+
+
+#The name of the agent
+#"Specify the name of the agent"
+agent = "centos7php7"
+
+#"Specify the rel of the agent" https://docs.microsoft.com/en-us/azure/devops/pipelines/agents/v2-linux?view=azure-devops#remove-and-re-configure-an-agent
+agent_rel = "2.182.1"
+agent_dist = "linux-x64"
+#             vsts-agent-rhel.6-x64-2.182.1.tar.gz
+#             vsts-agent-linux-x64-2.182.1.tar.gz
+#             vsts-agent-linux-arm-2.182.1.tar.gz
+# https://vstsagentpackage.azureedge.net/agent/2.182.1/vsts-agent-linux-x64-2.182.1.tar.gz
+# https://vstsagentpackage.azureedge.net/agent/2.182.1/vsts-agent-linux-arm-2.182.1.tar.gz
+# https://vstsagentpackage.azureedge.net/agent/${AGENTRELEASE}/vsts-agent-${AGENTRELEASE}.tar.gz

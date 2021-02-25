@@ -1,10 +1,12 @@
 # required variables
 variable "hostname" {
   description = "name of the machine to create"
+  default = "centos-7"
 }
 
 variable "name_prefix" {
   description = "unique part of the name to give to resources"
+  default = "az-hosted"
 }
 
 variable "ssh_public_key" {
@@ -14,7 +16,7 @@ variable "ssh_public_key" {
 # optional variables
 variable "location" {
   description = "region where the resources should exist"
-  default     = "eastus"
+  default     = "westeurope"
 }
 
 variable "vnet_address_space" {
@@ -39,17 +41,17 @@ variable "vm_size" {
 
 variable "image_publisher" {
   description = "name of the publisher of the image (az vm image list)"
-  default     = "Canonical"
+  default     = "OpenLogic"
 }
 
 variable "image_offer" {
   description = "the name of the offer (az vm image list)"
-  default     = "UbuntuServer"
+  default     = "CentOS"
 }
 
 variable "image_sku" {
   description = "image sku to apply (az vm image list)"
-  default     = "16.04-LTS"
+  default     = "7.5"
 }
 
 variable "image_version" {
@@ -59,15 +61,44 @@ variable "image_version" {
 
 variable "admin_username" {
   description = "administrator user name"
-  default     = "vmadmin"
 }
 
 variable "admin_password" {
   description = "administrator password (recommended to disable password auth)"
-  default     = "notused"
 }
 
 variable "disable_password_authentication" {
   description = "toggle for password auth (recommended to keep disabled)"
-  default     = true
+  default     = false
+}
+
+#Replace [Organization] https://dev.azure.com/[Organization]/_usersSettings/tokens
+variable "devops_url" {
+  description = "Specify the Azure DevOps url e.g. https://dev.azure.com/mmelcher"
+}
+
+#Create via https://dev.azure.com/[Organization]/_usersSettings/tokens
+variable "pat" {
+  description = "Provide a Personal Access Token (PAT) for Azure DevOps"
+}
+
+#The build agent pool. Create it via https://dev.azure.com/[Organization]/_settings/agentpools?poolId=8&_a=agents
+variable "pool" {
+  description = "Specify the name of the agent pool - must exist before"
+}
+
+#The name of the agent
+variable "agent" {
+  description = "Specify the name of the agent"
+}
+
+#             vsts-agent-{linux-x64}-2.182.1.tar.gz
+variable "agent_dist" {
+  description = "Specify dist of the agent: vsts-agent-{linux-x64}-2.182.1.tar.gz"
+  default = "linux-x64"
+}
+#             vsts-agent-linux-x64-{2.182.1}.tar.gz
+variable "agent_rel" {
+  description = "Specify the version of the agent: vsts-agent-linux-x64-{2.182.1}.tar.gz"
+  default = "2.182.1"
 }

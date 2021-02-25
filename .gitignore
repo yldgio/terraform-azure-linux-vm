@@ -1,2 +1,7 @@
-terraform.tfvars
+*.tfvars
 *.tfstate*
+*.log
+*.plan
+.terraform/
+.env
+*.tfplan
